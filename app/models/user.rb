@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   def to_s
     email
   end
+
+  def question_owner?(question)
+    self == question.user    
+  end
 end

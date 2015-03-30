@@ -43,6 +43,8 @@ RSpec.configure do |config|
 
   config.include SpecHelpers::Authorization
   config.include SpecHelpers::Database
+  config.include Devise::TestHelpers, type: :controller
+  config.include FactoryGirl::Syntax::Methods
 
   config.use_transactional_fixtures = false
 
