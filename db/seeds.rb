@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-alice = User.create(email: "alice@example.com", password: "password")
-bob = User.create(email: "bob@example.com", password: "password")
-charlie = User.create(email: "charlie@example.com", password: "password")
+alice = User.create(email: "alice@example.com", password: "password", points: 100)
+bob = User.create(email: "bob@example.com", password: "password", points: 100)
+charlie = User.create(email: "charlie@example.com", password: "password", points: 100)
 
 question1 = Question.create(title: "What is your quest?", contents: "What is your quest?", user: alice)
 question2 = Question.create(title: "What is your favorite color?", contents: "Please tell me your favorite colors", user: alice)

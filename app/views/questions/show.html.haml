@@ -1,9 +1,10 @@
-.question id="question-#{@question.id}"
-  h2= @question.title
+.question{ id: "question-#{@question.id}" }
+  %h2
+    = @question.title
 
   = render "details", question: @question
 
-  p
+  %p
     = @question.contents
 
   - if current_user && current_user.question_owner?(@question)
@@ -12,19 +13,20 @@
       '  |
       = link_to 'Delete', question_path(@question, method: :delete)
 
-  h3 Answers
+  %h3 Answers
 
   - if @question.answers.any?
     = render @question.answers
   - else
-    '  There are no answers to this question.
+    There are no answers to this question.
 
-  h3 Add answer
+  - if !@question.has_accepted_answer?
+    %h3 Add answer
 
-  = form_for [@question, @answer] do |f|
+    = form_for [@question, @answer] do |f|
 
-    .field
-      = f.label :contents
-      = f.text_area :contents
+      .field
+        = f.label :contents
+        = f.text_area :contents
 
-    .actions= f.submit 'Save'
+      .actions= f.submit 'Save'

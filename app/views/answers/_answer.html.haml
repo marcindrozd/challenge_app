@@ -1,0 +1,17 @@
+.answer{ id: "answer-#{answer.id}" }
+  .contents
+    = answer.contents
+    = link_to 'Like', question_likes_path(answer.question, answer), method: "post"
+    - if !answer.question.has_accepted_answer? && answer.question.user == current_user
+      |
+      = link_to 'Accept', question_accepts_path(answer.question, answer), method: "post"
+  .details
+    '  Answered on
+    = l(answer.created_at, format: :long)
+    '  by
+    = link_to answer.user, user_path(answer.user)
+  Number of likes:
+  = answer.likes.count
+  - if answer.accepted?
+    |
+    This answer has been selected as best answer!

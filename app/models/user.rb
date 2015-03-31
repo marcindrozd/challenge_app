@@ -6,12 +6,13 @@ class User < ActiveRecord::Base
 
   has_many :questions
   has_many :answers
+  has_many :likes
 
   def to_s
     email
   end
 
   def question_owner?(question)
-    self == question.user    
+    self == question.user
   end
 end
