@@ -15,4 +15,14 @@ class User < ActiveRecord::Base
   def question_owner?(question)
     self == question.user
   end
+
+  def add_points(number)
+    self.points += number
+    self.save
+  end
+
+  def subtract_points(number)
+    self.points -= number
+    self.save
+  end
 end

@@ -26,6 +26,7 @@ class AnswersController < ApplicationController
     like = @answer.likes.create(user: current_user)
     if like.valid?
       flash[:success] = "Like added!"
+      @answer.user.add_points(5)
       redirect_to question_path(params[:question_id])
     else
       flash[:alert] = "You have already voted on this item"
@@ -36,6 +37,7 @@ class AnswersController < ApplicationController
   def accept
     @answer = Answer.find(params[:id])
     @answer.accept!
+    @answer.user.add_points(25)
     flash[:notice] = "The answer has been accepted"
     redirect_to question_path(@question)
   end
